@@ -10,7 +10,7 @@ def visit(data):
 
 for i in visit([1,2,[3,4,(11,22)],5]):
     print (i)
-
+###########################################################
 def ge(num):
     if num<0:
         return
@@ -19,3 +19,17 @@ def ge(num):
             yield i
 
 print (next(ge(1)))
+
+
+############################################################
+
+l = []
+def vist(data):
+    for i in data:
+        if isinstance(i, (tuple, list)):
+            vist(i)
+        else:
+            l.append(i)
+    return l
+
+print (vist([1,2,[3,4,(11,22)],5]))

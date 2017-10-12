@@ -2,7 +2,7 @@
 def generator_t():
     print ('start')
     yield 1
-    return 4
+    return
 
 def normal_():
     return 1
@@ -14,15 +14,18 @@ t = generator_t()
 print (next(t))
 #print (next(t))
 
-
+####################################################
 def gen_data_from_file(file_name):
-    with open(file_name) as f:
+    with open(file_name,'r',encoding='utf-8') as f:
         for line in f.readlines():
             yield line
 
 def gen_words(line):
-    for word in (w for w in line.split() if w.strip()):
-        yield word
+    for word in line:
+        if word.strip():
+            yield word
+        #else:
+            #return
 
 def count_words(file_name):
     word_map = {}
@@ -40,7 +43,7 @@ def count_total_chars(file_name):
     return total
 
 if __name__ == '__main__':
-    print (count_words('yanghui.py'), count_total_chars('yanghui.py'))
+    print (count_words('desc.txt'), count_total_chars('yanghui.py'))
 
 with open('desc.txt', 'r', encoding='utf8') as f:
     #f.write('放松的方式')
